@@ -1,0 +1,19 @@
+name: Nikto Scan
+
+on:
+  push:
+    branches:
+      - main  # or your default branch
+
+jobs:
+  nikto-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Run Nikto scan
+      uses: docker://sullo/nikto:latest
+      with:
+        args: -h https://jcstudentsurveys.com
